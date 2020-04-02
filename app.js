@@ -6,6 +6,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var getInfoRouter=require('./routes/getInfo');
+
+var mongoose=require('mongoose');
 
 var app = express();
 
@@ -21,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/getInfo',getInfoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -37,5 +41,19 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+mongoose.connect('mongodb://localhost/test') //连接本地数据库
+mongoose.connection.on('connected', function () { 
+
+  console.log('Mongoose connection open to '); }); /** * 连接异常 */ 
+  
+  mongoose.connection.on('error',function (err) { 
+  
+  console.log('Mongoose connection error: ' + err); }); /** * 连接断开 */ 
+  
+  mongoose.connection.on('disconnected', function () { 
+  
+  console.log('Mongoose connection disconnected'); });
+  
 
 module.exports = app;
