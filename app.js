@@ -4,9 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//添加路由版块
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var getInfoRouter=require('./routes/getInfo');
+var shoppingCartRouter=require('./routes/shoppingCart');
+var usersInfoRouter=require('./routes/usersInfo');
+var booksInfoRouter=require('./routes/booksInfo');
+var eventInfoRouter=require('./routes/eventInfo');
 
 var mongoose=require('mongoose');
 
@@ -22,9 +26,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//使用路由
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/getInfo',getInfoRouter);
+app.use('/shoppingCart',shoppingCartRouter);
+app.use('/usersInfo',usersInfoRouter);
+app.use('/booksInfo',booksInfoRouter);
+app.use('/eventInfo',eventInfoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
