@@ -8,8 +8,8 @@ router.get('/', function(req, res, next) {
 
 router.get('/create', function(req, res, next) {
   var user1=new Users;
-  user1.id=123;
-  user1.name="zhangsan"
+  user1.id=1234;
+  user1.name="lisi"
   user1.save(function(err){
     if(err){console.log(err);}
     else{res.send('create successfully');}
@@ -24,7 +24,7 @@ router.get('/show', function(req, res, next) {
     if(err){
       console.log(err);
     }
-    else{ res.json({data:users});}
+    else{ res.json({users:users});}
   }
   )
 });

@@ -7,10 +7,9 @@ var logger = require('morgan');
 //添加路由版块
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var shoppingCartRouter=require('./routes/shoppingCart');
-var usersInfoRouter=require('./routes/usersInfo');
 var booksInfoRouter=require('./routes/booksInfo');
-var eventInfoRouter=require('./routes/eventInfo');
+var activityRouter=require('./routes/activity');
+
 
 var mongoose=require('mongoose');
 
@@ -26,13 +25,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//静态文件
+app.use(express.static('public'));
+
 //使用路由
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/shoppingCart',shoppingCartRouter);
-app.use('/usersInfo',usersInfoRouter);
 app.use('/booksInfo',booksInfoRouter);
-app.use('/eventInfo',eventInfoRouter);
+app.use('/activity',activityRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -50,7 +50,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-mongoose.connect('mongodb://localhost/test') //连接本地数据库
+mongoose.connect('mongodb://localhost/test');//连接本地数据库
 mongoose.connection.on('connected', function () { 
 
   console.log('Mongoose connection open to '); }); /** * 连接异常 */ 

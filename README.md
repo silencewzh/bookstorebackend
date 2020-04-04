@@ -61,3 +61,6 @@ moongoose api：
 http://www.mongoosejs.net/docs/api.html#document_Document-save
 参考链接：
 https://www.cnblogs.com/paul123/p/5396290.html
+
+暂时解决图片显示：
+app.js中将静态文件夹暴露
