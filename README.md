@@ -50,3 +50,14 @@ module.exports = router;
 
 数据模型模块:/modules
 
+例子可见:
+1.首先在/schemas/users.js 定义用户 其中包括字段和函数（应用到所有users中） 导出为UsersSchema
+2.在/modules/users.js 将其转换为模型，导出为Users
+3.在路由文件（具体操作数据的地方）中，引入moongoose以及模型var Users = require('../modules/users'); （ moongoose已经在app.js 中引入并连接上）
+
+一般在schema的方法中带上callback参数，可以在具体操作js中写回调函数
+在具体操作函数里，第一个参数带上err 判断是否出错并打印，便于调试
+moongoose api：
+http://www.mongoosejs.net/docs/api.html#document_Document-save
+参考链接：
+https://www.cnblogs.com/paul123/p/5396290.html

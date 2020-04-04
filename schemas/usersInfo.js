@@ -1,17 +1,16 @@
 var mongoose = require('mongoose');
 
 //声明对象
-var UsersSchema=new mongoose.Schema({
-  name:String,
-  id:String,
-  sex:String,
+var UsersInfoSchema=new mongoose.Schema({
+  cartbooks:[],
+  buyhistory:[],
 })
 
 //UsersSchema.method.
-UsersSchema.statics={
+UsersInfoSchema.statics={
   findByName:function(name,callback){
     return this.find({name:name},callback)
   }
 }
 
-module.exports=UsersSchema
+module.exports=UsersInfoSchema
