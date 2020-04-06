@@ -14,15 +14,23 @@ var BooksSchema=new mongoose.Schema({
   
 })
 
-//用户的方法
+//书目的方法
 BooksSchema.statics={
-  //根据Id查找
-  findById:function(id,callback){
-    return this.find({id:id},callback)
+  //根据书名查找
+  findByName:function(name,callback){
+    return this.find({bookName:name},callback)
   },
   //列出所有
   listAll:function(callback){
     return this.find().sort().exec(callback);
+  },
+  //更新书的数量
+  updateBookCount:function(name,count,callback){
+    return this.updateOne({bookName:name}, {$set:{counts: count}}, callback);
+  },
+  //删除书目
+  deleteByName:function(name,callback){
+    return this.deleteOne({bookName:name},callback);
   }
 }
 
