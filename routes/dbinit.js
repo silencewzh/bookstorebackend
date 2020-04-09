@@ -88,7 +88,7 @@ user5.save(function(err){
 })
 
 var books1=new Books({
-  tag:'中小学教辅',//分类
+  tag:'考试',//分类
   bookName:'五年高考三年模拟英语（全国一卷）',//书名
   writer:'教育科学出版社', //作者
   price:70.8,//价格
@@ -106,7 +106,7 @@ books1.save(function(err){
 
 
 var books2=new Books({
-  tag:'艺术',//分类
+  tag:'工具书',//分类
   bookName:'手机摄影从小白到高手 手机摄影大师练成必读',//书名
   writer:'杨精坤 ', //作者
   price:41.8,//价格
@@ -124,7 +124,7 @@ books2.save(function(err){
 
 
 var books3=new Books({
-  tag:'青春文学',//分类
+  tag:'文学',//分类
   bookName:'我不怕这漫长黑夜',//书名
   writer:'苑子豪，果麦文化', //作者
   price:22.5,//价格
@@ -143,7 +143,7 @@ books3.save(function(err){
 
 
 var books4=new Books({
-  tag:'中小学教辅',//分类
+  tag:'工具书',//分类
   bookName:'现代汉语词典(第7版)',//书名
   writer:'中国社会科学院语言研究所词典编辑室 ', //作者
   price:92.8,//价格
@@ -179,7 +179,7 @@ books5.save(function(err){
 
 
 var books6=new Books({
-  tag:'中小学教辅',//分类
+  tag:'文学',//分类
   bookName:'福尔摩斯探案集',//书名
   writer:'柯南 道尔，童趣出版有限公司', //作者
   price:13.4,//价格
@@ -197,7 +197,7 @@ books6.save(function(err){
 
 
 var books7=new Books({
-  tag:'中小学教辅',//分类
+  tag:'传记',//分类
   bookName:'假如给我三天光明',//书名
   writer:'海伦 凯勒 ', //作者
   price:11.1,//价格
@@ -215,7 +215,7 @@ books7.save(function(err){
 
 
 var books8=new Books({
-  tag:'中小学教辅',//分类
+  tag:'教材',//分类
   bookName:'数学原来可以这样学',//书名
   writer:'野口哲典', //作者
   price:29.2,//价格
@@ -233,7 +233,7 @@ books8.save(function(err){
 
 
 var books9=new Books({
-  tag:'中小学教辅',//分类
+  tag:'文学',//分类
   bookName:'骆驼祥子',//书名
   writer:'老舍', //作者
   price:11.8,//价格
@@ -252,7 +252,7 @@ books9.save(function(err){
 
 
 var books10=new Books({
-  tag:'小说',//分类
+  tag:'文学',//分类
   bookName:'活着',//书名
   writer:'余华', //作者
   price:19.3,//价格
@@ -269,7 +269,7 @@ books10.save(function(err){
 })
 
 var books11=new Books({
-  tag:'小说',//分类
+  tag:'自传',//分类
   bookName:'人间失格',//书名
   writer:'太宰治', //作者
   price:9.2,//价格
@@ -287,7 +287,7 @@ books11.save(function(err){
 
 
 var books12=new Books({
-  tag:'小说',//分类
+  tag:'文学',//分类
   bookName:'百年孤独',//书名
   writer:'马尔克斯', //作者
   price:39.2,//价格
@@ -307,7 +307,7 @@ books12.save(function(err){
 
 
 var books13=new Books({
-  tag:'小说',//分类
+  tag:'文学',//分类
   bookName:'追风筝的人',//书名
   writer:'卡勒德·胡赛尼', //作者
   price:18,//价格
@@ -323,6 +323,22 @@ books13.save(function(err){
   else{console.log('book13');}
 })
 
+var books14=new Books({
+  tag:'历史',//分类
+  bookName:'中国历史',//书名
+  writer:'人民教育出版社', //作者
+  price:18,//价格
+  brief:'2018年新版',//简介
+  details:'中国历史细度分析',//详情
+  image:"aaa.png" ,//图片
+  points:18,//购买积分
+  counts:96,//数量
+
+})
+books14.save(function(err){
+  if(err){console.log(err);}
+  else{console.log('book13');}
+})
 
 
 var activity1=new Activity({

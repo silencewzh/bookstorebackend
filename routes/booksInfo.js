@@ -35,8 +35,8 @@ router.post('/findByName',function(req,res,next){
 });
 
 router.post('/findByTag',function(req,res,next){
-  console.log('findByTag');
-  Books.findByName(req.body.tag, function(err, results){
+  console.log(req.body.tag);
+  Books.findByTag(req.body.tag, function(err, results){
     if(err){
       console.log(err);
       res.send('数据库出问题了');
