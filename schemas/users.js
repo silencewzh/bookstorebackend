@@ -51,7 +51,10 @@ UsersSchema.statics={
     return this.updateOne({id:id}, {$push:{cartBooks: book}}, callback);
 
   },
-
+  //添加历史记录
+  addToHistory:function(id,book,callback){
+    return this.updateOne({id:id}, {$push:{cartBooks: book}}, callback);
+  },
   //更新积分
   updatePoints:function(id,points,callback){
     return this.updateOne({id:id},{$set:{points: points}},callback);

@@ -164,4 +164,17 @@ router.post('/getHistory',function(req,res,next){
   })
 });
 
+router.post('/addToHistory', function(req, res, next) {
+  console.log(req.body.id)
+  console.log(req.body.book)
+  Users.addToShoppingCart(req.body.id,req.body.book, function(err, result){
+    if(err){
+      res.send(err)
+    }else{
+      res.send(true)
+    }
+  })
+});
+
+
 module.exports = router;
