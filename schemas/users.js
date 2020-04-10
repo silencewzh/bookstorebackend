@@ -37,6 +37,11 @@ UsersSchema.statics={
   // 更新购物车
   updateShoppingCart:function(id, cartBooks, callback) {
     return this.updateOne({id:id}, {$set:{cartBooks: cartBooks}}, callback);
+  },
+
+  //更新积分
+  updatePoints:function(name,points,callback){
+    return this.updateOne({name:name},{$set:{points: points}},callback);
   }
 };
 module.exports=UsersSchema;

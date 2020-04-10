@@ -129,6 +129,18 @@ router.post('/getPoints',function(req,res,next){
   })
 });
 
+//修改积分
+router.post('/updatePoints',function(req,res,next){
+  Users.updatePoints(req.body.name,req.body.points,function(err,result){
+    if(err){
+      res.send(err)
+    }else{
+      res.send(true);
+    }
+  })
+
+});
+
 router.post('/getHistory',function(req,res,next){
   Users.findById(req.body.id,function(err, result){
     if(err){
