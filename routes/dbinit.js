@@ -367,7 +367,7 @@ activity2.save(function(err){
 var activity3=new Activity({
   id:'3',
   tags:'开发人员' ,
-  details:'开发人员:石泽昆，陈添，刘思铭，雷冈',
+  details:'开发人员:汪志豪 黄文柯',
   brief:'开发人员',
 
 })
