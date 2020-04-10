@@ -39,7 +39,6 @@ user2.save(function(err){
 })
 
 
-
 var user3=new Users({
   name:'wzh',//昵称
   sex:'male',//性别
@@ -54,7 +53,6 @@ user3.save(function(err){
   if(err){console.log(err);}
   else{console.log('user3');}
 })
-
 
 var user4=new Users({
   name:'Sunny',//昵称

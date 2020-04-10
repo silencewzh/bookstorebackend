@@ -1,29 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var Users = require('../modules/users');
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
-router.get('/create', function(req, res, next) {
-  var user1=new Users;
-  user1.id=1234;
-  user1.name="lisi"
-  user1.save(function(err){
-    if(err){console.log(err);}
-    else{res.send('create successfully');}
-  });
-});
-router.get('/show', function(req, res, next) {
-  Users.listAll(function(err,users){
-    if(err){
-      console.log(err);
-    }
-    else{ res.json({users:users});}
-  }
-  )
-});
 
 router.post('/register',function(req,res,next){
   console.log('register');
@@ -77,6 +54,17 @@ router.post('/login',function(req,res,next){
   })
 });
 
+router.post('/getUserInfo', function(req,res,next) {
+  Users.getUserInfo(req.body.id, function(err, result){
+    if (!err) {
+      console.log(result);
+      res.json(result);
+    } else {
+      console.log(err);
+      res.send(err);
+    }
+  })
+});
 router.post('/refreshUserInfo',function(req,res,next){
   Users.refreshUserInfo(req.body.id, req.body.name, req.body.sex, function(err, rawResponse){
     if (!err) {
@@ -89,11 +77,20 @@ router.post('/refreshUserInfo',function(req,res,next){
 });
 
 router.post('/resetPassword',function(req,res,next){
-  Users.resetPassword(req.body.id, req.body.password,function(err, rawResponse){
+  Users.resetPassword(req.body.id,req.body.oidPassword, req.body.newPassword,function(err, rawResponse){
     if(err){
       res.send(err)
     }else{
-      console.log(rawResponse);
+      res.send(true);
+    }
+  })
+});
+
+router.post('/resetPassword',function(req,res,next){
+  Users.resetEmail(req.body.id,req.body.oidEmail, req.body.newEmail,function(err, rawResponse){
+    if(err){
+      res.send(err)
+    }else{
       res.send(true);
     }
   })
@@ -112,6 +109,16 @@ router.post('/getShoppingCart',function(req,res,next){
 router.post('/refreshShoppingCart',function(req,res,next){
   Users.updateShoppingCart(req.body.id,req.body.cartBooks,function(err, result){
     if(err){
+      res.send(false);
+      res.send(err);
+    }else{
+      res.send(true);
+    }
+  })
+});
+router.post('/addToShoppingCart', function(req, res, next) {
+  Users.addToShoppingCart(req.body.id,req.body.book, function(err, result){
+    if(err){
       res.send(err)
     }else{
       res.send(true)
@@ -119,8 +126,7 @@ router.post('/refreshShoppingCart',function(req,res,next){
   })
 });
 
-router.post('/getUserPoints',function(req,res,next){
-  console.log(req.body.id)
+router.post('/getPoints',function(req,res,next){
   Users.findById(req.body.id,function(err, result){
     if(err){
       res.send(err)
