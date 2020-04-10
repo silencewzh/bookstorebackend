@@ -5,9 +5,6 @@ var Books = require('../modules/books');
 
 /* GET booksInfo listing. */
 router.get('/show', function(req, res, next) {
-  
-  
-
   Books.listAll(function(err,books){
     if(err){
       console.log(err);
@@ -22,6 +19,24 @@ router.post('/findByName',function(req,res,next){
   console.log(req.body);
   console.log(typeof(req.body.bookName));
   Books.findByName(req.body.bookName, function(err, results){
+    if(err){
+      console.log(err);
+      res.send('数据库出问题了');
+    }
+    else{
+      console.log(results);
+      if (results.length === 0){
+        res.send('书目不存在');
+      }else{
+        res.json(results);
+      }
+    }
+  })
+});
+
+router.post('/findByTag',function(req,res,next){
+  console.log(req.body.tag);
+  Books.findByTag(req.body.tag, function(err, results){
     if(err){
       console.log(err);
       res.send('数据库出问题了');

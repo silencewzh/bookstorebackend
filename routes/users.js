@@ -62,7 +62,7 @@ router.post('/login',function(req,res,next){
     }
     else{
       console.log(results);
-      if (results.length === 0){
+      if (!results){
         res.send('该用户不存在')
       }else{
         console.log(req.body.password);
@@ -119,7 +119,8 @@ router.post('/refreshShoppingCart',function(req,res,next){
   })
 });
 
-router.post('/getPoints',function(req,res,next){
+router.post('/getUserPoints',function(req,res,next){
+  console.log(req.body.id)
   Users.findById(req.body.id,function(err, result){
     if(err){
       res.send(err)

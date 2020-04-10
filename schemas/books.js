@@ -11,7 +11,7 @@ var BooksSchema=new mongoose.Schema({
   image:String ,//图片
   points:Number,//购买积分
   counts:Number,//数量
-  
+
 })
 
 //书目的方法
@@ -19,6 +19,10 @@ BooksSchema.statics={
   //根据书名查找
   findByName:function(name,callback){
     return this.find({bookName:name},callback)
+  },
+  //根据书类别查找
+  findByTag:function(tag,callback){
+    return this.find({tag:tag},callback)
   },
   //列出所有
   listAll:function(callback){
