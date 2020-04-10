@@ -335,7 +335,7 @@ var books14=new Books({
 })
 books14.save(function(err){
   if(err){console.log(err);}
-  else{console.log('book13');}
+  else{console.log('book14');}
 })
 
 
@@ -353,7 +353,7 @@ activity1.save(function(err){
 
 var activity2=new Activity({
   id:'2',
-  tags:'公告' ,
+  tags:'开服公告' ,
   details:'4.4日清明节为国家英雄悼念',
   brief:'4.4清明节纪念',
 
@@ -366,9 +366,9 @@ activity2.save(function(err){
 
 var activity3=new Activity({
   id:'3',
-  tags:'优惠活动' ,
-  details:'在中学校教辅分类下买满四本自动减免一本（取基价最低）书费用',
-  brief:'教辅资料买三送一',
+  tags:'开发人员' ,
+  details:'开发人员:石泽昆，陈添，刘思铭，雷冈',
+  brief:'开发人员',
 
 })
 activity3.save(function(err){

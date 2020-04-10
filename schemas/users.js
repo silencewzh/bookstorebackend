@@ -39,8 +39,8 @@ UsersSchema.statics={
     return this.updateOne({id:id, password: oldPassword}, {$set:{password: newPassword}}, callback);
   },
   // 更新邮箱
-  resetEmail:function(id, oldEmail, newEmail, callback) {
-    return this.updateOne({id:id, password: oldEmail}, {$set:{password: newEmail}}, callback);
+  resetEmail:function(id, password,oldEmail, newEmail, callback) {
+    return this.updateOne({id:id, password: password, email: oldEmail}, {$set:{email: newEmail}}, callback);
   },
   // 更新购物车
   updateShoppingCart:function(id, cartBooks, callback) {
@@ -48,12 +48,13 @@ UsersSchema.statics={
   },
   // 添加到购物车
   addToShoppingCart:function(id, book, callback) {
-    return this.updateOne({id:id}, {$set:{cartBooks: this.cartBooks.push(book)}}, callback);
+    return this.updateOne({id:id}, {$push:{cartBooks: book}}, callback);
+
   },
 
   //更新积分
-  updatePoints:function(name,points,callback){
-    return this.updateOne({name:name},{$set:{points: points}},callback);
+  updatePoints:function(id,points,callback){
+    return this.updateOne({id:id},{$set:{points: points}},callback);
   }
 };
 module.exports=UsersSchema;

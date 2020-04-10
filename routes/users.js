@@ -77,24 +77,26 @@ router.post('/refreshUserInfo',function(req,res,next){
 });
 
 router.post('/resetPassword',function(req,res,next){
-  Users.resetPassword(req.body.id,req.body.oidPassword, req.body.newPassword,function(err, rawResponse){
+  Users.resetPassword(req.body.id,req.body.oldPassword, req.body.newPassword,function(err, rawResponse){
     if(err){
       res.send(err)
     }else{
-      res.send(true);
+      res.send(rawResponse.nModified.toString());
     }
   })
 });
 
-router.post('/resetPassword',function(req,res,next){
-  Users.resetEmail(req.body.id,req.body.oidEmail, req.body.newEmail,function(err, rawResponse){
+router.post('/resetEmail',function(req,res,next){
+  Users.resetEmail(req.body.id, req.body.password, req.body.oldEmail, req.body.newEmail,function(err, rawResponse){
     if(err){
       res.send(err)
     }else{
-      res.send(true);
+      res.send(rawResponse.nModified.toString());
     }
   })
 });
+
+
 
 router.post('/getShoppingCart',function(req,res,next){
   Users.findById(req.body.id,function(err, result){
@@ -117,6 +119,8 @@ router.post('/refreshShoppingCart',function(req,res,next){
   })
 });
 router.post('/addToShoppingCart', function(req, res, next) {
+  console.log(req.body.id)
+  console.log(req.body.book)
   Users.addToShoppingCart(req.body.id,req.body.book, function(err, result){
     if(err){
       res.send(err)
@@ -127,18 +131,20 @@ router.post('/addToShoppingCart', function(req, res, next) {
 });
 
 router.post('/getPoints',function(req,res,next){
+  console.log(req.body.id)
   Users.findById(req.body.id,function(err, result){
     if(err){
       res.send(err)
     }else{
-      res.send(result.points)
+      res.send(result.points.toString())
     }
   })
 });
 
 //修改积分
 router.post('/updatePoints',function(req,res,next){
-  Users.updatePoints(req.body.name,req.body.points,function(err,result){
+  console.log(req.body.points)
+  Users.updatePoints(req.body.id,req.body.points,function(err,result){
     if(err){
       res.send(err)
     }else{
